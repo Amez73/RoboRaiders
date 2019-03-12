@@ -52,9 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f39d1b05b7a674dbafd67fe0fa5dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myProjectile: {fileID: 11400000, guid: 257d52682132c7b41bb91127d1beaf2b, type: 2}
-  myPlayer: {fileID: 0}
-  myPlayerController: {fileID: 0}
+  myProjectile: {fileID: 1633339152435234, guid: ddc6c6fe9846a1f48a90bdf59dcdac72,
+    type: 2}
 --- !u!212 &212083689909752160
 SpriteRenderer:
   m_ObjectHideFlags: 1

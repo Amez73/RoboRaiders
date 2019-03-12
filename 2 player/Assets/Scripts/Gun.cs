@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour {
 
 
-	public ProjectileObject myProjectile;
+	public GameObject myProjectile;
 	private GameObject myPlayer;
 	private PlayerController myPlayerController;
 
@@ -21,11 +21,11 @@ public class Gun : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void Shoot()
+	public void Shoot(Transform shootPosition)
 	{
 		Debug.Log ("Pew");
 		//create the projectile
-		GameObject fireBallClone = (GameObject)Instantiate(myProjectile, new Vector2(0f, 0f), Quaternion.identity);
+		GameObject fireBallClone = (GameObject)Instantiate(myProjectile, shootPosition.position, shootPosition.rotation);
 		
 	}
 }
