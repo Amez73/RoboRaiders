@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	// public string shootLeft;
 
 	public GameObject fireBall;
-	public Transform shootPoint;
+	public Transform handPoint;
 	public int direction;
 
 
@@ -277,7 +277,7 @@ public class PlayerController : MonoBehaviour {
 	void Shoot()
 	{	
 		
-		assignedGun.Shoot(shootPoint);
+		assignedGun.Shoot();
 		/*
 		 laserGun.Play();
 		//making an instance of fireball
@@ -325,7 +325,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		this.assignedGun = newGun;
-		gunInstance = Instantiate (assignedGun.gameObject, shootPoint.position, shootPoint.rotation, transform);
+		gunInstance = Instantiate (assignedGun.gameObject, handPoint.position, handPoint.rotation, transform);
 
 		//gunInstance.transform.parent = this.transform;
 
