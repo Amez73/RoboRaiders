@@ -36,6 +36,9 @@ public class Projectile : MonoBehaviour {
         theRB = GetComponent<Rigidbody2D>();
 		//Getting the left stick controller position from parent gameobject(the player)
 		//PlayerController playercontroller = GetComponentInParent<PlayerController> ();
+
+		/*
+
 		xShotComponent = playercontroller.xComponent;
 		yShotComponent = -playercontroller.yComponent;
 
@@ -102,7 +105,7 @@ public class Projectile : MonoBehaviour {
 		}
 		GetComponent<DestroyOverTime> ().lifeTime = selectedProjectile.shotSpeed/((1/selectedProjectile.range)*100); 
 
-
+		*/
 
 	}
 	

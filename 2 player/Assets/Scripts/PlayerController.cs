@@ -255,28 +255,13 @@ public class PlayerController : MonoBehaviour {
 
 		anim.SetFloat("Speed", Mathf.Abs(theRB.velocity.x));
 		anim.SetBool("Grounded", isGrounded);
+
 		//if player clicks shoot
-
-		if (assignedProjectile.fireRate == 0) {
-			if (Input.GetKeyDown (shoot)) {
-				Shoot ();
-			}
-		}
-
-		else
-		{
-			if (Input.GetKey(shoot) && Time.time > timeToFire) 
-			{
-				timeToFire = Time.time + 1 / assignedProjectile.fireRate;
-				Shoot ();
-			}
-		}
-
-		if (Input.GetKey (KeyCode.Space) == true) {
+		if (Input.GetKeyDown (shoot)) {
 			Shoot ();
-
 		}
-
+			
+			
 		isGroundedOld = isGrounded;
 
 

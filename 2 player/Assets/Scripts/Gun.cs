@@ -11,7 +11,11 @@ public class Gun : MonoBehaviour {
 	private PlayerController myPlayerController;
 	private Transform shootPoint;
 
+	private GameObject ammoInstance;
+	private Rigidbody2D theRB;
+
 	private float localFireRate;
+	private float localShotSpeed;
 
 	float timeToFire = 0;
 
@@ -19,9 +23,11 @@ public class Gun : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		myPlayer = transform.parent.gameObject;
 		ammoProjectile = ammoObject.GetComponent<Projectile>();
 		Debug.Log (ammoProjectile.selectedProjectile.description);
 		localFireRate = ammoProjectile.selectedProjectile.fireRate;
+		localShotSpeed = ammoProjectile.selectedProjectile.shotSpeed;
 		shootPoint = transform.Find("shootPoint");
 		//GameObject myPlayer = this.transform.parent.gameObject;
 		//GameObject myGameObject = this.transform.gameObject;
@@ -37,6 +43,7 @@ public class Gun : MonoBehaviour {
 		if (localFireRate == 0) {
 
 			Summon();
+			Throw ();
 			//create a bullet
 		}
 
@@ -46,6 +53,7 @@ public class Gun : MonoBehaviour {
 			{
 				timeToFire = Time.time + 1 / localFireRate;
 				Summon ();
+				Throw ();
 			}
 		}
 
@@ -53,8 +61,17 @@ public class Gun : MonoBehaviour {
 
 	private void Summon(){
 		Debug.Log ("Shooting!");
-		GameObject fireBallClone = (GameObject)Instantiate(ammoObject, this.transform.position, this.transform.rotation);
-		Debug.Log (transform.position);
+		ammoInstance = (GameObject)Instantiate(ammoObject, shootPoint.position, shootPoint.rotation);
+		theRB = ammoInstance.GetComponent<Rigidbody2D>();
+	
+	}
+	private void Throw(){
+		
+		//apply velocity along normalized vector between shootpoint and transform
+
+		theRB.velocity = new Vector2 (localShotSpeed*myPlayer.transform.localScale.x,0f);
+		ammoInstance.transform.localScale = myPlayer.transform.localScale;
+		Debug.Log (Mathf.Sign (myPlayer.transform.localScale.x));
 	
 	}
 }
