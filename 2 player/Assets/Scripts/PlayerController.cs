@@ -60,7 +60,9 @@ public class PlayerController : MonoBehaviour {
 
 	public ProjectileObject assignedProjectile;
 	public Gun assignedGun;
+
 	private GameObject gunInstance;
+	private Gun gunScript;
 
 	float timeToFire = 0;
 
@@ -269,6 +271,12 @@ public class PlayerController : MonoBehaviour {
 				Shoot ();
 			}
 		}
+
+		if (Input.GetKey (KeyCode.Space) == true) {
+			Shoot ();
+
+		}
+
 		isGroundedOld = isGrounded;
 
 
@@ -276,8 +284,9 @@ public class PlayerController : MonoBehaviour {
 	}
 	void Shoot()
 	{	
-		
-		assignedGun.Shoot();
+
+		Debug.Log ("suh");
+		gunScript.Shoot();
 		/*
 		 laserGun.Play();
 		//making an instance of fireball
@@ -326,6 +335,8 @@ public class PlayerController : MonoBehaviour {
 
 		this.assignedGun = newGun;
 		gunInstance = Instantiate (assignedGun.gameObject, handPoint.position, handPoint.rotation, transform);
+
+		gunScript = gunInstance.GetComponent<Gun> ();
 
 		//gunInstance.transform.parent = this.transform;
 

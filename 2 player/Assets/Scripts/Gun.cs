@@ -5,11 +5,13 @@ using UnityEngine;
 public class Gun : MonoBehaviour {
 
 
-	public GameObject Ammo;
-	private ProjectileObject ammoStats;
+	public GameObject ammoObject;
+	private Projectile ammoProjectile;
 	private GameObject myPlayer;
 	private PlayerController myPlayerController;
-	public Transform shootPosition;
+	private Transform shootPoint;
+
+	private float localFireRate;
 
 	float timeToFire = 0;
 
@@ -17,8 +19,10 @@ public class Gun : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		ammoStats = Ammo.GetComponent<Projectile>().selectedProjectile;
-		shootPosition = GetComponentInChildren<Transform> ();
+		ammoProjectile = ammoObject.GetComponent<Projectile>();
+		Debug.Log (ammoProjectile.selectedProjectile.description);
+		localFireRate = ammoProjectile.selectedProjectile.fireRate;
+		shootPoint = transform.Find("shootPoint");
 		//GameObject myPlayer = this.transform.parent.gameObject;
 		//GameObject myGameObject = this.transform.gameObject;
 		//PlayerController myPlayerController = myPlayer.GetComponent<PlayerController> ();
@@ -30,8 +34,7 @@ public class Gun : MonoBehaviour {
 	}
 	public void Shoot()
 	{
-
-		if (ammoStats.fireRate == 0) {
+		if (localFireRate == 0) {
 
 			Summon();
 			//create a bullet
@@ -41,19 +44,17 @@ public class Gun : MonoBehaviour {
 		{
 			if (Time.time > timeToFire) 
 			{
-				timeToFire = Time.time + 1 / ammoStats.fireRate;
-				Shoot ();
+				timeToFire = Time.time + 1 / localFireRate;
+				Summon ();
 			}
 		}
-		Debug.Log ("Pew");
-		//create the projectile
-		Summon();
 
 	}
 
 	private void Summon(){
-	
-		GameObject fireBallClone = (GameObject)Instantiate(Ammo, shootPosition.position, shootPosition.rotation);
+		Debug.Log ("Shooting!");
+		GameObject fireBallClone = (GameObject)Instantiate(ammoObject, this.transform.position, this.transform.rotation);
+		Debug.Log (transform.position);
 	
 	}
 }
