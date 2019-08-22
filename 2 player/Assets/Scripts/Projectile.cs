@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour {
 
    // public float ballSpeed;
 
-    private Rigidbody2D theRB;
+    //private Rigidbody2D theRB;
 
     public GameObject sparkEffect;
 	public float xShotComponent;
@@ -29,11 +29,12 @@ public class Projectile : MonoBehaviour {
 	public float magnitude;
 
     // Use this for initialization
-	public void Initialize (PlayerController playercontroller,string playerTag, ProjectileObject assignedProjectile) {
+	public void AssignOwner(string playerTag) {
 
+		Debug.Log ("im here");
 		damageDealerTag = playerTag;
 		//setting up the rigid body within script
-        theRB = GetComponent<Rigidbody2D>();
+        //theRB = GetComponent<Rigidbody2D>();
 		//Getting the left stick controller position from parent gameobject(the player)
 		//PlayerController playercontroller = GetComponentInParent<PlayerController> ();
 

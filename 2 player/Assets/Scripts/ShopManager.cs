@@ -20,45 +20,50 @@ public class ShopManager : MonoBehaviour {
 			SceneManager.LoadScene(lvl1);
 		}
 	}
-	public void Buy (ProjectileObject chosenProjectile, string purchasingPlayerTag)
+	public void Buy (Gun chosenGun, string purchasingPlayerTag)
 	{
 
-		GameObject purchasingPlayer = GameObject.FindGameObjectWithTag (purchasingPlayerTag);
+
+		GameObject purchasingPlayer = GameObject.FindGameObjectWithTag(purchasingPlayerTag);
 		PlayerController purchasingPlayerController = purchasingPlayer.GetComponent<PlayerController>();
 
 		switch (purchasingPlayerTag) 
 		{
 		case "Player 2":
-			if (GameManager.p2Scrap >= chosenProjectile.cost && purchasingPlayerController.assignedProjectile != chosenProjectile) 
+			if (GameManager.p2Scrap >= chosenGun.gunStats.cost && purchasingPlayerController.assignedProjectile != chosenGun) 
 			{
-				GameManager.p2Scrap -= chosenProjectile.cost;
+				GameManager.p2Scrap -= chosenGun.gunStats.cost;
 				Debug.Log (GameManager.p2Scrap);
-				//purchasingPlayerController.assignedProjectile = chosenProjectile;
-				GameManager.p2Projectile = chosenProjectile;
-				purchasingPlayerController.assignedProjectile = GameManager.p2Projectile;
-				Debug.Log (GameManager.p1Projectile);
+				//purchasingPlayerController.assignedProjectile = chosenGun;
+				//GameManager.p2Projectile = chosenGun;
+				//purchasingPlayerController.assignedProjectile = GameManager.p2Projectile;
+				//Debug.Log (GameManager.p1Projectile);
+				purchasingPlayerController.AssignGun (chosenGun);
 			
 
 			}
 			else{
 				Debug.Log("Not Enough Cash or Already Owned");
+				Debug.Log (GameManager.p2Scrap);
 			}
 			break;
 
 		case "Player 1":
-			if (GameManager.p1Scrap >= chosenProjectile.cost && purchasingPlayerController.assignedProjectile != chosenProjectile) 
+			if (GameManager.p1Scrap >= chosenGun.gunStats.cost && purchasingPlayerController.assignedProjectile != chosenGun) 
 			{
-				GameManager.p1Scrap -= chosenProjectile.cost;
+				GameManager.p1Scrap -= chosenGun.gunStats.cost;
 				Debug.Log (GameManager.p1Scrap);
-				//purchasingPlayerController.assignedProjectile = chosenProjectile;
-				Debug.Log (GameManager.p2Projectile);
-				GameManager.p1Projectile = chosenProjectile;
-				purchasingPlayerController.assignedProjectile = GameManager.p1Projectile;
+				//purchasingPlayerController.assignedProjectile = chosenGun;
+				//Debug.Log (GameManager.p2Projectile);
+				//GameManager.p1Projectile = chosenGun;
+				//purchasingPlayerController.assignedProjectile = GameManager.p1Projectile;
+				purchasingPlayerController.AssignGun (chosenGun);
 
 
 			}
 			else{
 				Debug.Log("Not Enough Cash or Already Owned");
+				Debug.Log (GameManager.p1Scrap);
 			}
 			break;
 

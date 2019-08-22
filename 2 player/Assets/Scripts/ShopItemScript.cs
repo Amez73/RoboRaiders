@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShopItemScript : MonoBehaviour {
 
-	public ProjectileObject projectileData;
+	public Gun thisGun;
 
 	// Use this for initialization
 	void Start () {
@@ -23,10 +23,11 @@ public class ShopItemScript : MonoBehaviour {
 			//Example
 			//GameManager gameManager = FindObjectOfType<GameManager>();
 			//gameManager.Buy(projectileData, other.GetComponent<Projectile>().damageDealerTag);
-
+			Debug.Log (other.GetComponent<Projectile> ().damageDealerTag);
 			Debug.Log ("Button Shot!");
 			ShopManager shopManager = FindObjectOfType<ShopManager>();
-			shopManager.Buy(projectileData, other.GetComponent<Projectile>().damageDealerTag);
+			shopManager.Buy(thisGun, other.GetComponent<Projectile>().damageDealerTag);
+
 		}
 	}
 }

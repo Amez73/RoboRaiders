@@ -310,7 +310,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	}
-	void AssignGun(Gun newGun)
+	public void AssignGun(Gun newGun)
 	{
 		if (transform.GetComponentInChildren<Gun> () != null) 
 		{

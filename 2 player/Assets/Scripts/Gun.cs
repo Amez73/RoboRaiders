@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour {
 
 	public GameObject ammoObject;
 	private Projectile ammoProjectile;
+	public GunStats gunStats;
 	private GameObject myPlayer;
 	private PlayerController myPlayerController;
 	private Transform shootPoint;
@@ -62,6 +63,8 @@ public class Gun : MonoBehaviour {
 	private void Summon(){
 		Debug.Log ("Shooting!");
 		ammoInstance = (GameObject)Instantiate(ammoObject, shootPoint.position, shootPoint.rotation);
+		Projectile projectileScript = ammoInstance.GetComponent<Projectile>();
+		projectileScript.AssignOwner(myPlayer.tag);
 		theRB = ammoInstance.GetComponent<Rigidbody2D>();
 	
 	}
@@ -71,7 +74,6 @@ public class Gun : MonoBehaviour {
 
 		theRB.velocity = new Vector2 (localShotSpeed*myPlayer.transform.localScale.x,0f);
 		ammoInstance.transform.localScale = myPlayer.transform.localScale;
-		Debug.Log (Mathf.Sign (myPlayer.transform.localScale.x));
 	
 	}
 }

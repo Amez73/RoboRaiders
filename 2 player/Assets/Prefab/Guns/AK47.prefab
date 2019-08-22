@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212221456123559006}
   - component: {fileID: 114663029190738626}
   m_Layer: 0
-  m_Name: AK Gun 1 1
+  m_Name: AK47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f39d1b05b7a674dbafd67fe0fa5dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoObject: {fileID: 1633339152435234, guid: ddc6c6fe9846a1f48a90bdf59dcdac72, type: 2}
+  ammoObject: {fileID: 1633339152435234, guid: a52d73c8ccbe1ac46bd518bf0eec9257, type: 2}
+  gunStats: {fileID: 11400000, guid: 5c220a42cce82da47a3c993eecfebf98, type: 2}
 --- !u!212 &212221456123559006
 SpriteRenderer:
   m_ObjectHideFlags: 1

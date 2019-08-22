@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114245279076089962}
   - component: {fileID: 114761551358854668}
   m_Layer: 0
-  m_Name: fireball
+  m_Name: Bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,12 @@ MonoBehaviour:
   yShotComponent: 0
   damageDealerTag: 
   damageTakerTag: 
-  selectedProjectile: {fileID: 0}
+  selectedProjectile: {fileID: 11400000, guid: 257d52682132c7b41bb91127d1beaf2b, type: 2}
+  theta: 0
+  shotAngle: 0
+  shotX: 0
+  shotY: 0
+  shotAngleD: 0
   magnitude: 0
 --- !u!114 &114761551358854668
 MonoBehaviour:
@@ -143,7 +148,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f865d49a16b66a94db3f3952487504ad, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.25517225, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
